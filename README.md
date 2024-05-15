@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+Local configuration
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To configure github actions in Firebase only requires to run commands as described in [official documentation](https://firebase.google.com/docs/hosting/github-integration):
 
-Currently, two official plugins are available:
+For the new Firebase setup run the following and select the github actions option:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```
+firebase init hosting
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+If already firebase created, we can add github actions with the following command:
+
+```bash
+firebase init hosting:github
+```
+
+For more details about the Firebase github actions, see the [official github repo](https://github.com/marketplace/actions/deploy-to-firebase-hosting).
+
+## Github configuration
+
+Could be important to shadow the project ID as a secret, to do that we can add this property as a secret in Repository -\> settings -\> secrets and variables -\> Actions -\> Repository secrets
+
+## Configuring deployment in two different environments
+
+To configure two projects in the same workspace is used the command:
+
+```bash
+firebase use --add
+```
+
+This command is important to achieve the deployment in two different environments at the same time.
+
+# References
+
+This article was part of the spike task HUTADE-2 to understand how the projects, environments and github actions work, all code and POC are located at the github repository [hutade/poc-firebase-actions](https://github.com/hutade/poc-firebase-actions)
+
+[GitHub actions for Firebase deploy](https://github.com/marketplace/actions/deploy-to-firebase-hosting)
+
+[Handle Firebase environments blog](https://firebase.blog/posts/2016/07/deploy-to-multiple-environments-with)
+
+Git flows
+
+[Trunk based development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development)
