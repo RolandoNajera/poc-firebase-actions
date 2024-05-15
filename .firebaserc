@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "testing-actions-desployment"
-  }
+    "default": "testing-actions-deployment",
+    "prod": "testing-actions-deployment-pro"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
